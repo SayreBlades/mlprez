@@ -23,13 +23,32 @@ revealOptions:
 
 Sayre Blades 
 
+Note:
+There will be some physics in this talk, so I hope you are ready.
+
 ----------------------------
 
 ## Who is Lotik?
 
+[http://samsungnext.com][2]
+
 [http://lotik.com][1]
 
 [1]: http://lotik.com
+[2]: http://samsungnext.com
+
+Note:
+Lotik is partnerd with samsung next, a global investment division
+within samsung.  Samsung next start is an accelerator for start up
+teams. They provide lotik resources like: office space, HR, legal,
+etc...
+
+(talk about picture)
+
+Lotik is a wireless water intelligence service.
+- does anybody pay a water bill?
+- why is usage monitoring important?
+
 
 v---------------------------
 
@@ -37,14 +56,19 @@ v---------------------------
 
 Data Engineer
 
-  - software engineer
-  - devops / architecture
-  - big data
-  - machine learning
+- software engineer
+- devops / architecture
+- big data
+- machine learning
 <!-- .element: class="fragment" data-fragment-index="1" -->
   
 Note:
-My background is
+Talk about my background
+
+dont forget:
+- machine learning
+
+This is my first professional ML project.
 
 v---------------------------
 
@@ -54,6 +78,9 @@ v---------------------------
 - Analysis
 - Data Wrangling
 - Automation
+
+Note:
+You will notice
 
 ----------------------------
 
