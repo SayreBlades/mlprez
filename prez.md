@@ -3,13 +3,13 @@ title: LotikLabs
 # theme: beige
 # theme: black
 # theme: blood
-theme: league
+# theme: league
 # theme: moon
 # theme: night
 # theme: serif
 # theme: simple
 # theme: sky
-# theme: solarized
+theme: solarized
 # theme: white
 # highlight-theme: github
 highlightTheme: argate
@@ -38,9 +38,9 @@ There will be some physics in this talk, so I hope you are ready.
 [2]: http://samsungnext.com
 
 Note:
-Lotik is partnerd with samsung next, a global investment division
-within samsung.  Samsung next start is an accelerator for start up
-teams. They provide lotik resources like: office space, HR, legal,
+Lotik is partnerd with samsung next, a global investment initiative
+within samsung.  Samsung next start is the division that targets
+start ups. They provide lotik resources like: office space, HR, legal,
 etc...
 
 (talk about picture)
