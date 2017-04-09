@@ -17,6 +17,8 @@ separator: ----------------------------
 verticalSeparator: v---------------------------
 revealOptions:
     controls: true
+    transition: 'fade'
+    slideNumber: true
 ---
 
 # Applied ML @ LotikLabs
@@ -30,12 +32,9 @@ There will be some physics in this talk, so I hope you are ready.
 
 ## Who is Lotik?
 
-[http://samsungnext.com][2]
+http://samsungnext.com
 
-[http://lotik.com][1]
-
-[1]: http://lotik.com
-[2]: http://samsungnext.com
+http://lotik.com
 
 Note:
 
@@ -77,42 +76,70 @@ This is my first professional ML project.
 
 v---------------------------
 
-## Agenda
+## Data Wrangling
 
-- Data Collection
-- Analysis
-- Data Wrangling
-- Automation
+1. Collection
+1. Modifying
+1. Analysis & Clensing
+1. Automation
 
 Note:
-You will notice
+
+(data science's less attractive sibling)
+
+I am not a data science expert. Most of my career has mostly been
+focused on data processing: moving data from one place to another;
+storing it; retrieving it; building pipelines around it; and
+productionizing it.
+
+In data-science terms, its called pre-processing.
 
 ----------------------------
 
-## Data Collection
-
-<img src="data-aq1.png" alt="Drawing" style="float:left; width: 46%;"/>
-<img src="meter.png" alt="Drawing" style="float:right; width: 46%;"/>
+## 1. Data Collection
 
 v---------------------------
 
-## Data Collection
+### First Attempt
 
-<img src="data-aq2.jpg" alt="Drawing" style="width: 50%;"/>
+<img src="data-aq1.png" style="width: 40%;"/>
+
+Note:
+
+When I first joined the team, this is what data collection
+looked like.  This is data to train/validate/test a
+classification model.
+
+
+v---------------------------
+
+### Second Attempt
+
+(code name: second attempt)
+
+<img src="data-aq2-meter.png" style="float:left; width: 40%;"/>
+<img src="data-aq2-bath.jpg" style="width: 40%;"/>
+<img src="data-aq2-toilet.jpg" style="width: 40%;"/>
+
+v---------------------------
+
+### Third Attempt
+
+<img src="data-aq3.png" style="width: 40%;"/>
 
 ----------------------------
 
-## Analysis
-
-<img src="analysis.png" alt="Drawing" style="width: 50%;"/>
+## 2. Modifying Data
 
 ----------------------------
 
-## Data Wrangling
+## 3. Analysis & Clensing
 
 ----------------------------
 
-## Automation
+## 4. Automation
+
+https://pypi.python.org/pypi/palladium/
 
 ----------------------------
 
