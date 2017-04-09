@@ -38,6 +38,7 @@ There will be some physics in this talk, so I hope you are ready.
 [2]: http://samsungnext.com
 
 Note:
+
 Lotik is partnerd with samsung next, a global investment initiative
 within samsung.  Samsung next start is the division that targets
 start ups. They provide lotik resources like: office space, HR, legal,
