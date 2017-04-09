@@ -39,12 +39,16 @@ There will be some physics in this talk, so I hope you are ready.
 
 Note:
 
+(open samsung next link)
+
 Lotik is partnerd with samsung next, a global investment initiative
 within samsung.  Samsung next start is the division that targets
 start ups. They provide lotik resources like: office space, HR, legal,
 etc...
 
 (talk about picture)
+
+(back, open lotik link)
 
 Lotik is a wireless water intelligence service.
 - does anybody pay a water bill?
