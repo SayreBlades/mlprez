@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>prez.html</title>
+
+</head>
+
+<body>
+
+<hr />
+
+<p>title: LotikLabs</p>
+
+<h1>theme: beige</h1>
+
+<h1>theme: black</h1>
+
+<h1>theme: blood</h1>
+
+<h1>theme: league</h1>
+
+<h1>theme: moon</h1>
+
+<h1>theme: night</h1>
+
+<h1>theme: serif</h1>
+
+<h1>theme: simple</h1>
+
+<h1>theme: sky</h1>
+
+<p>theme: solarized</p>
+
+<h1>theme: white</h1>
+
+<h1>highlight-theme: github</h1>
+
+<p>highlightTheme: argate
+separator: ----------------------------
+verticalSeparator: v---------------------------
+revealOptions:
+    controls: true</p>
+
+<h2>    slideNumber: true</h2>
+
+<h1>Applied ML @ LotikLabs</h1>
+
+<p>Sayre Blades </p>
+
+<p>Note:
+There will be some physics in this talk, so I hope you are ready.</p>
+
+<hr />
+
+<h2>Who is Lotik?</h2>
+
+<p>http://samsungnext.com</p>
+
+<p>http://lotik.com</p>
+
+<p>Note:</p>
+
+<p>(open samsung next link)</p>
+
+<p>Lotik is partnerd with samsung next, a global investment initiative
+within samsung.  Samsung next start is the division that targets
+start ups. They provide lotik resources like: office space, HR, legal,
+etc...</p>
+
+<p>(talk about picture)</p>
+
+<p>(back, open lotik link)</p>
+
+<p>Lotik is a wireless water intelligence service.
+- does anybody pay a water bill?
+- why is usage monitoring important?</p>
+
+<p>v---------------------------</p>
+
+<h2>Who are you?</h2>
+
+<p>Data Engineer</p>
+
+<ul>
+<li>software engineer</li>
+<li>devops / architecture</li>
+<li>big data</li>
+<li>machine learning
+<!-- .element: class="fragment" data-fragment-index="1" --></li>
+</ul>
+
+<p>Note:
+Talk about my background</p>
+
+<p>dont forget:
+- machine learning</p>
+
+<p>This is my first professional ML project.</p>
+
+<p>v---------------------------</p>
+
+<h2>Workflow</h2>
+
+<ol>
+<li>Data Collection</li>
+<li>Pre-process</li>
+<li>Analysis &amp; Clensing</li>
+<li>Modeling</li>
+</ol>
+
+<p>Note:</p>
+
+<p>(data science's less attractive sibling)</p>
+
+<p>I am not a data science expert. Most of my career has mostly been
+focused on data processing: moving data from one place to another;
+storing it; retrieving it; building pipelines around it; and
+productionizing it.</p>
+
+<p>In data-science terms, its called pre-processing.</p>
+
+<hr />
+
+<h2>1. Data Collection</h2>
+
+<p>v---------------------------</p>
+
+<h3>First Attempt</h3>
+
+<p><img src="data-aq1.png" style="width: 40%;"/></p>
+
+<p>Note:</p>
+
+<p>When I first joined the team, this is what data collection
+looked like.  This is data to train/validate/test a
+classification model.</p>
+
+<p>no fun</p>
+
+<p>Attempt to get ground truth.</p>
+
+<p>v---------------------------</p>
+
+<h3>Second Attempt</h3>
+
+<p><img src="data-aq2-meter.png" style="float:left; width: 40%;"/>
+<img src="data-aq2-bath.jpg" style="width: 40%;"/>
+<img src="data-aq2-toilet.jpg" style="width: 40%;"/></p>
+
+<p>v---------------------------</p>
+
+<h3>Third Attempt</h3>
+
+<p><img src="data-aq3.png" style="width: 40%;"/></p>
+
+<hr />
+
+<h2>2. Pre-process Data</h2>
+
+<p>Note:</p>
+
+<p>Here I will talk about taking the data in its raw form and
+converting it to a format that is consumable by our models.</p>
+
+<p>v---------------------------</p>
+
+<h2>Raw format</h2>
+
+<p>metadata file
+<code>
+            pipe type: braided
+            pipe size: 3/8
+              fixture: bath sink auto
+Started collection at: 2017-04-10 14:15:40.098894
+           stopped at: 2017-04-10 22:06:31.078903
+ Total number of rows: 11,541,037
+             rows/sec: 408.518111453950
+</code>
+csv data file
+<code>
+x,y,z,pulses
+-0.8862,0.0303,0.2824,0
+-0.9487,0.0254,0.2882,0
+-0.9555,0.0283,0.3009,0
+-0.9546,0.0244,0.2970,0
+-0.9565,0.0264,0.2941,0
+-0.9555,0.0254,0.3009,0
+-0.9575,0.0274,0.2970,0
+-0.9536,0.0274,0.2931,0
+-0.9516,0.0274,0.3000,1
+</code></p>
+
+<p>v---------------------------</p>
+
+<h2>Gen 2 format</h2>
+
+<p>```
+time     rms<em>x   rms</em>y   rms_z    corr    zcr      flow  label
+18:15:49 0.00716 0.00297 0.00522  0.01446 60.00000 0.000 Off
+18:15:50 0.00331 0.00322 0.00552  0.01086 69.33333 0.000 Off
+18:15:51 0.00305 0.00306 0.00578  0.02608 66.00000 0.000 Off
+18:15:52 0.00300 0.00303 0.00584 -0.04534 59.00000 0.000 Off
+18:15:53 0.00334 0.00308 0.00582 -0.05407 54.33333 0.000 Off
+18:15:54 0.00286 0.00302 0.00613 -0.07043 66.33333 0.000 Off
+18:15:55 0.00290 0.00300 0.00584  0.03176 60.00000 0.000 Off
+18:15:56 0.00377 0.00421 0.00650  0.09796 47.00000 0.000 Off</p>
+
+<p>```</p>
+
+<p>v---------------------------</p>
+
+<h2>Gen 3 format</h2>
+
+<p><code>
+time                          x       y      z     p  ml_bf
+2017-04-10 18:15:49.065448999 -0.939  0.118  0.341 0  0.158
+2017-04-10 18:15:49.067896000 -0.938  0.084  0.323 0  0.158
+2017-04-10 18:15:49.070344000 -0.934  0.041  0.309 0  0.158
+2017-04-10 18:15:49.072792000 -0.966  0.044  0.203 0  0.158
+2017-04-10 18:15:49.075240000 -0.980  0.027  0.226 0  0.158
+2017-04-10 18:15:49.077688000 -0.936  0.042  0.222 0  0.158
+2017-04-10 18:15:49.080136000 -0.910  0.011  0.208 0  0.158
+2017-04-10 18:15:49.082584000 -0.941 -0.023  0.223 1  0.158
+</code></p>
+
+<hr />
+
+<h2>3. Analysis &amp; Clensing</h2>
+
+<hr />
+
+<h2>4. Automation</h2>
+
+<p>https://pypi.python.org/pypi/palladium/</p>
+
+<hr />
+
+<h2>Thanks</h2>
+
+<pre><code>email: sblades@samsungnext.com
+github: SayreBlades
+</code></pre>
+
+<p>Note:
+If you would like access to these slides feel free
+to drop me a line.</p>
+
+</body>
+</html>
