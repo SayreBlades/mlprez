@@ -9,8 +9,9 @@ title: LotikLabs
 # theme: serif
 # theme: simple
 # theme: sky
-theme: solarized
+# theme: solarized
 # theme: white
+theme: prez
 # highlight-theme: github
 highlightTheme: argate
 separator: ----------------------------
@@ -20,7 +21,8 @@ revealOptions:
     slideNumber: true
 ---
 
-# Applied ML @ LotikLabs
+# Applied ML @
+# LotikLabs
 
 Sayre Blades 
 
@@ -46,11 +48,11 @@ etc...
 
 (talk about picture)
 
-(back, open lotik link)
+(open lotik link)
 
 Lotik is a wireless water intelligence service.
-- does anybody pay a water bill?
 - why is usage monitoring important?
+- does anybody pay a water bill?
 
 
 v---------------------------
@@ -62,8 +64,7 @@ Data Engineer
 - software engineer
 - devops / architecture
 - big data
-- machine learning
-<!-- .element: class="fragment" data-fragment-index="1" -->
+- machine learning <!-- .element: class="fragment" data-fragment-index="1" -->
   
 Note:
 Talk about my background
@@ -73,9 +74,9 @@ dont forget:
 
 This is my first professional ML project.
 
-v---------------------------
+----------------------------
 
-## Workflow
+## Lotik's ML Workflow
 
 1. Data Collection <!-- .element: class="fragment grow highlight-current-blue" -->
 1. Pre-processing
@@ -84,48 +85,38 @@ v---------------------------
 
 Note:
 
-(data science's less attractive sibling)
-
-I am not a data science expert. Most of my career has mostly been
-focused on data processing: moving data from one place to another;
-storing it; retrieving it; building pipelines around it; and
-productionizing it.
-
-In data-science terms, its called pre-processing.
-
 v---------------------------
 
 ### First Attempt
 
-<img src="data-aq1.png" style="width: 40%;"/>
+<img src="img/data-aq1.png" style="width: 40%;"/>
 
 Note:
 
-When I first joined the team, this is what data collection
-looked like.  This is data to train/validate/test a
-classification model.
+Ground Truth
 
-no fun
+Classification.
 
-Attempt to get ground truth.
+No Fun.
+
 
 v---------------------------
 
 ### Second Attempt
 
-<img src="data-aq2-meter.png" style="float:left; width: 40%;"/>
-<img src="data-aq2-bath.jpg" style="width: 40%;"/>
-<img src="data-aq2-toilet.jpg" style="width: 40%;"/>
+<img src="img/data-aq2-meter.png" style="float:left; width: 40%;"/>
+<img src="img/data-aq2-bath.jpg" style="width: 40%;"/>
+<img src="img/data-aq2-toilet.jpg" style="width: 40%;"/>
 
 v---------------------------
 
-### Third Attempt
+### Current Attempt
 
-<img src="data-aq3.png" style="width: 40%;"/>
+<img src="img/data-aq3.png" style="width: 40%;"/>
 
 ----------------------------
 
-## Workflow
+## Lotik's ML Workflow
 
 1. Data Collection
 1. Pre-processing <!-- .element: class="fragment grow highlight-current-blue" -->
@@ -139,17 +130,17 @@ converting it to a format that is consumable by our models.
 
 v---------------------------
 
-## Raw format
+### Raw Format
 
 metadata file
 
 				pipe type: braided
 				pipe size: 3/8
-				fixture: bath sink auto
+				  fixture: bath sink auto
 	Started collection at: 2017-04-10 14:15:40.098894
-			stopped at: 2017-04-10 22:06:31.078903
-	Total number of rows: 11,541,037
-				rows/sec: 408.518111453950
+               stopped at: 2017-04-10 22:06:31.078903
+	 Total number of rows: 11,541,037
+				 rows/sec: 408.518111453950
 
 csv data file
 
@@ -159,14 +150,12 @@ csv data file
 	-0.9555,0.0283,0.3009,0
 	-0.9546,0.0244,0.2970,0
 	-0.9565,0.0264,0.2941,0
-	-0.9555,0.0254,0.3009,0
-	-0.9575,0.0274,0.2970,0
-	-0.9536,0.0274,0.2931,0
 	-0.9516,0.0274,0.3000,1
+	...
 
 v---------------------------
 
-## Gen 2 format
+### Legacy Model Format
 
 	time     rms_x   rms_y   rms_z    corr    zcr      flow  label
 	18:15:49 0.00716 0.00297 0.00522  0.01446 60.00000 0.000 Off
@@ -177,10 +166,11 @@ v---------------------------
 	18:15:54 0.00286 0.00302 0.00613 -0.07043 66.33333 0.000 Off
 	18:15:55 0.00290 0.00300 0.00584  0.03176 60.00000 0.000 Off
 	18:15:56 0.00377 0.00421 0.00650  0.09796 47.00000 0.000 Off
+	...
 
 v---------------------------
 
-## Gen 3 format
+### Spectrum Model Format
 
 	time               x        y       z      p  ml_bf
 	18:15:49.065448999 -0.9399  0.1182  0.3410 0  0.158730
@@ -191,10 +181,11 @@ v---------------------------
 	18:15:49.077688000 -0.9360  0.0420  0.2228 0  0.158730
 	18:15:49.080136000 -0.9106  0.0117  0.2081 0  0.158730
 	18:15:49.082584000 -0.9419 -0.0234  0.2237 1  0.158730
+	...
 
 ----------------------------
 
-## Workflow
+## Lotik's ML Workflow
 
 1. Data Collection
 1. Pre-processing
@@ -203,17 +194,48 @@ v---------------------------
 
 v---------------------------
 
-<img src="rms-analysis.png" />
+### Data Integrity Check
+
+```python
+def outliers(row, axis_name='rms_x'):
+    label = row['label_label']
+    mean_on = row[axis_name + '_mean_on']
+    mean_off = row[axis_name + '_mean_off']
+    mean = row[axis_name + '_mean']
+    
+    if label in ['On', 'Half On', 'Other On'] and not is_sgt(mean, mean_off):
+        return axis_name + ': < Off'
+    elif label == 'Trickle' and is_slt(mean, mean_off):
+        return axis_name + ': < Off'
+    elif label == 'Other On' and not is_slt(mean, mean_on):
+        return axis_name + ': > On'        
+    return ''
+```
 
 v---------------------------
 
-<img src="gen3-rms.png" style="float:left; width: 45%;"/>
+### Legacy Model Check
 
-<img src="gen3-spec.png" style="float:right; width: 45%;"/>
+<img src="img/gen2-check.png" />
+
+(view [notebook](http://localhost:8888/notebooks/inline-flow-meter/gen3-data-visualization.ipynb))
+
+v---------------------------
+
+### Spectrum Model Check
+
+
+<img src="img/gen3-rms.png" style="float:left; width: 48%;"/>
+
+<img src="img/gen3-spec.png" style="float:right; width: 45%;"/>
+
+<div style="clear:left;">
+(view [notebook](http://localhost:8888/notebooks/inline-flow-meter/generate-specgram.ipynb))
+<div>
 
 ----------------------------
 
-## Workflow
+## Lotik's ML Workflow
 
 1. Data Collection
 1. Pre-processing
@@ -222,9 +244,29 @@ v---------------------------
 
 v---------------------------
 
-## Palladium
+### Modeling Tools
+
+palladium
 
 https://pypi.python.org/pypi/palladium/
+
+sklearn-porter
+
+https://github.com/nok/sklearn-porter
+
+Note:
+
+(go to website)
+
+Great tool, check it out.
+
+We use it to help automate all of our modeling effort.
+
+v---------------------------
+
+### Model Comparison
+
+<img src="img/model-comparison.png" />
 
 ----------------------------
 
