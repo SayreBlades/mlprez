@@ -61,10 +61,10 @@ v---------------------------
 
 Data Engineer
 
-- software engineer
-- devops / architecture
-- big data
-- machine learning <!-- .element: class="fragment" data-fragment-index="1" -->
+- app dev
+- dev ops 
+- architecture
+- machine learning
   
 Note:
 Talk about my background
