@@ -2,14 +2,8 @@
 
 ## Install
 
-> npm install reveal-md
+  npm install reveal-md -g
 
 ## Run
 
-> reveal-md prez.md -w --disable-auto-open
-
-## Outstanding
-
-- class imbalance
-  - data distribution
-  - train/test/validate
+  reveal-md prez.md

@@ -21,13 +21,11 @@ revealOptions:
     slideNumber: true
 ---
 
-# Applied ML @
-# LotikLabs
+# Applied ML @ LotikLabs
 
-Sayre Blades 
+Sayre Blades
 
 Note:
-There will be some physics in this talk, so I hope you are ready.
 
 ----------------------------
 
