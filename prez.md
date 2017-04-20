@@ -216,7 +216,8 @@ v---------------------------
 
 <img src="img/gen2-check.png" />
 
-(view [notebook](http://localhost:8888/notebooks/inline-flow-meter/gen3-data-visualization.ipynb))
+(view [notebook1](http://localhost:8888/notebooks/inline-flow-meter/gen3-data-visualization.ipynb))
+(view [notebook2](https://github.com/samsungaccelerator/lotik-analysis/blob/master/inline-flow-meter/gen3-data-visualization.ipynb))
 
 v---------------------------
 
@@ -228,7 +229,8 @@ v---------------------------
 <img src="img/gen3-spec.png" style="float:right; width: 45%;"/>
 
 <div style="clear:left;">
-(view [notebook](http://localhost:8888/notebooks/inline-flow-meter/generate-specgram.ipynb))
+(view [notebook1](http://localhost:8888/notebooks/inline-flow-meter/generate-specgram.ipynb))
+(view [notebook2](https://github.com/samsungaccelerator/lotik-analysis/blob/master/inline-flow-meter/generate-specgram.ipynb))
 <div>
 
 ----------------------------
